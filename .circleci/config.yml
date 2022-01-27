@@ -4,10 +4,13 @@ workflows:
   test-deploy:
     jobs:
       - test
-      - deploy:
+      - hold
+          type: approval
           requires:
             - test
-          type: approval
+      - deploy:
+          requires:
+            - hold
           
 
 jobs:
@@ -22,6 +25,10 @@ jobs:
       - run:
           name: Run tests
           command: npm run test
+  hold:
+    docker:
+      - image: cimg/node:14:13.0
+      
   deploy:
     docker:
       - image: cimg/node:14.13.0
