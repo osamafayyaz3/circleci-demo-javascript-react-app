@@ -4,7 +4,7 @@ workflows:
   test-deploy:
     jobs:
       - test
-      - hold
+      - hold:
           type: approval
           requires:
             - test
