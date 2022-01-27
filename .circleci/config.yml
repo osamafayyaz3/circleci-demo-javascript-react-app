@@ -25,9 +25,6 @@ jobs:
       - run:
           name: Run tests
           command: npm run test
-  hold:
-    docker:
-      - image: cimg/node:14:13.0
       
   deploy:
     docker:
