@@ -5,7 +5,8 @@ workflows:
     jobs:
       - test
       - deploy:
-          requires: test
+          requires:
+            - test
           type: approval
           
 
@@ -24,6 +25,6 @@ jobs:
   deploy:
     docker:
       - image: cimg/node:14.13.0
-     steps:
-       - checkout
-       - run: echo 'hello app is deploying'
+    steps:
+      - checkout
+      - run: echo 'hello app is deploying'
